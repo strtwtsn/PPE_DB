@@ -23,6 +23,8 @@ end
 bash "configure postgis" do
 user "root"
 code <<-EOH
+ldconfig
+
 createdb -T template0 -O postgres -U postgres -E UTF8 template_postgis
 createlang plpgsql -U postgres -d template_postgis
 psql -d template_postgis -U postgres -c "CREATE EXTENSION postgis;"
@@ -30,7 +32,6 @@ psql -d template_postgis -U postgres -c "CREATE EXTENSION postgis_topology;"
 psql -d template_postgis -U postgres < /usr/local/src/postgis-2.0.2/postgis/legacy.sql
 psql -d postgres -U postgres -c "CREATE USER ppe"
 psql -d postgres -U postgres -c "ALTER USER ppe WITH SUPERUSER CREATEDB REPLICATION;"
-ldconfig
 EOH
 end
 
