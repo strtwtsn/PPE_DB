@@ -27,3 +27,10 @@ template "/etc/postgresql/9.2/main/pg_hba.conf" do
 source "pg_hba.conf.erb"
 notifies :restart, resources(:service => "postgresql"), :immediately
 end
+
+
+
+template "/etc/postgresql/9.2/main/postgresql.conf" do
+source "postgresql.conf.erb"
+notifies :restart, resources(:service => "postgresql"), :immediately
+end
