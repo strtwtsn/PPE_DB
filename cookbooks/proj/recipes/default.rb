@@ -12,6 +12,6 @@ tar xvzf proj-4.8.0.tar.gz
 cd proj-4.8.0
 ./configure
 make
-checkinstall --pkgname sphinx --pkgversion 4.8.0-src --default
+checkinstall --pkgname proj --pkgversion 4.8.0-src --default
 EOH
 end
