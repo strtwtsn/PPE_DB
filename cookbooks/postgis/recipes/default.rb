@@ -25,13 +25,13 @@ user "root"
 code <<-EOH
 ldconfig
 
-createdb -T template0 -O postgres -U postgres -E UTF8 template_postgis
-createlang plpgsql -U postgres -d template_postgis
-psql -d template_postgis -U postgres -c "CREATE EXTENSION postgis;"
-psql -d template_postgis -U postgres -c "CREATE EXTENSION postgis_topology;"
-psql -d template_postgis -U postgres < /usr/local/src/postgis-2.0.2/postgis/legacy.sql
-psql -d postgres -U postgres -c "CREATE USER ppe"
-psql -d postgres -U postgres -c "ALTER USER ppe WITH SUPERUSER CREATEDB REPLICATION;"
+sudo -u postgres createdb -T template0 -O postgres -U postgres -E UTF8 template_postgis
+sudo -u postgres createlang plpgsql -U postgres -d template_postgis
+sudo -u postgres psql -d template_postgis -U postgres -c "CREATE EXTENSION postgis;"
+sudo -u postgres psql -d template_postgis -U postgres -c "CREATE EXTENSION postgis_topology;"
+sudo -u postgres psql -d template_postgis -U postgres < /usr/local/src/postgis-2.0.2/postgis/legacy.sql
+sudo -u postgres psql -d postgres -U postgres -c "CREATE USER ppe"
+sudo -u postgres psql -d postgres -U postgres -c "ALTER USER ppe WITH SUPERUSER CREATEDB REPLICATION;"
 EOH
 end
 
